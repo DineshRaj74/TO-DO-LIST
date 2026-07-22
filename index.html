@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-LIST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <div class="repo-bar">
+            <span class="dot"></span>
+            <span>Dinesh Raj/Tasks</span>
+            <!-- <span class="branch">main</span> -->
+        </div>
+
+        <h1>Task<span> Log</span></h1>
+        <p class="subtitle">Every task is a diff. Commit what's done, revert what's not needed.</p>
+
+        <div class="composer">
+            <div class="composer-row">
+                <input id="userinput" type="text" placeholder="git commit -m &quot;finish resume review&quot;">
+                <button class="btn-commit" id="addBtn">Stage +</button>
+            </div>
+            <p class="hint">Press Enter or click Stage to add</p>
+        </div>
+
+        <div class="log-label">
+            <span>Task Log</span>
+            <span><span id="count">0</span> open</span>
+        </div>
+
+        <ul id="list"></ul>
+
+        <div class="empty-state" id="emptyState">
+            <strong>No commits yet</strong>
+            Stage your first task above to start the log.
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

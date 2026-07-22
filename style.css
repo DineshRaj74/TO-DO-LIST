@@ -1,0 +1,290 @@
+:root {
+    --paper: #FAF9F6;
+    --paper-alt: #F0EEE7;
+    --ink: #1C1E26;
+    --ink-soft: #5B5E6B;
+    --line: #DEDCD3;
+    --indigo: #4F5D95;
+    --green: #3FB950;
+    --red: #F85149;
+    --red-bg: #FDEEED;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px;
+    line-height: 1.5;
+}
+
+.app {
+    width: 100%;
+    max-width: 640px;
+}
+
+/* top bar, looks like a repo name + branch */
+.repo-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--indigo);
+}
+
+.repo-bar .branch {
+    color: var(--indigo);
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+h1 span {
+    color: var(--indigo);
+}
+
+.subtitle {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* input + stage button */
+.composer {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 28px;
+}
+
+.composer-row {
+    display: flex;
+    gap: 10px;
+}
+
+#userinput {
+    flex: 1;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--paper-alt);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s ease;
+}
+
+#userinput:focus {
+    border-color: var(--indigo);
+}
+
+#userinput::placeholder {
+    color: #9A9CA6;
+}
+
+button {
+    font-family: var(--sans);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform .1s ease, opacity .15s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.btn-commit {
+    background: var(--ink);
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.btn-commit:hover {
+    opacity: 0.85;
+}
+
+.hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #9A9CA6;
+    margin-top: 8px;
+    padding-left: 2px;
+}
+
+.log-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    padding: 0 2px;
+}
+
+#count {
+    color: var(--indigo);
+    font-weight: 700;
+}
+
+ul#list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+li {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--green);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: slideIn .2s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+li.done {
+    border-left-color: var(--line);
+    background: var(--paper-alt);
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid var(--line);
+    background: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: #fff;
+}
+
+li.done .checkbox {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.task-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-text {
+    font-family: var(--mono);
+    font-size: 14.5px;
+    word-break: break-word;
+}
+
+.task-text::before {
+    content: "+ ";
+    color: var(--green);
+    font-weight: 700;
+}
+
+li.done .task-text {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+}
+
+li.done .task-text::before {
+    content: "− ";
+    color: var(--ink-soft);
+}
+
+.meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #9A9CA6;
+    margin-top: 4px;
+}
+
+.meta .hash {
+    color: var(--indigo);
+}
+
+.btn-revert {
+    background: var(--red-bg);
+    color: var(--red);
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 5px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.btn-revert:hover {
+    background: #FBDEDC;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 13px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+}
+
+.empty-state strong {
+    display: block;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 480px) {
+    .composer-row { flex-direction: column; }
+    .btn-commit { padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    li { animation: none; }
+}
